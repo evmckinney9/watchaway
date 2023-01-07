@@ -20,7 +20,15 @@ console.log(req.body);\
 res.send('Hello World!');\
 };
 ```
-
+___
+`nodemon` automatically restarts the server when changes are made, transpiles typescript in src/ to javascript in build/
+```json
+  "scripts": {
+    "build": "tsc",
+    "prestart": "npm run build",
+    "start": "nodemon"
+  },
+```
 ___
 Requires `src/firebase_config.json`
 ```typescript

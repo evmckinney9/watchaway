@@ -1,6 +1,11 @@
 import { Request, Response } from 'express';
 import axios from 'axios';
 
+export const helloWorld = (req: Request, res: Response) => {
+    console.log(req.body);
+    res.send('Hello World!');
+};
+
 export const getProduct = async (req: Request, res: Response) => {
     try {
         const response = await axios.get(

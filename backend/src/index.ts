@@ -1,6 +1,6 @@
 import express from 'express';
 import cors from 'cors';
-import router from './routes';
+import router from './router';
 import { initializeApp } from "firebase/app";
 // import { getAnalytics } from "firebase/analytics";
 import { firebaseConfig } from './firebase_config';
@@ -20,8 +20,9 @@ const port = 5000;
 server.use(express.urlencoded({ extended: true }));
 // add middleware to parse json data
 server.use(express.json());
-
+// add middleware to allow cross-origin requests
 server.use(cors());
+
 server.use('/api', router);
 
 server.listen(port, () => {
