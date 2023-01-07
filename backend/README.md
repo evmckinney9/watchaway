@@ -2,7 +2,7 @@
 
 | index.ts | router.ts | controller.ts |
 | --- | --- | --- |
-| Initialzes Express and Firebase, adds middleware, starts listening to endpoints | Router acts like a table of contents of GET and POST commands, attaching endpoints to functions | Services are async functions which recieves requests, and may query the database |
+| Initialzes Express and Firebase servers, adds middleware, starts listening to endpoints | Router acts like a table of contents of GET and POST commands, attaching endpoints to functions | Services are async functions which recieves requests, and may query the database |
 
 ```typescript 
 //index.ts
