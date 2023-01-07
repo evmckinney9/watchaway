@@ -16,8 +16,8 @@ router.get('/', helloWorld);
 
 //controller.ts
 export const helloWorld = (req: Request, res: Response) => { \
-console.log(req.body);\
-res.send('Hello World!');\
+    console.log(req.body);\
+    res.send('Hello World!');\
 };
 ```
 ___
