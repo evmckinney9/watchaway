@@ -1,12 +1,12 @@
-Welcome to watchaway, the app used to suggest movies to you based on what your friends want you to watch! With watchaway, you can join groups of people to synchronize your watch lists and share movie recommendations.
+Welcome to watchaway, where you can discover new movies with the help of your friends! This app allows you to:
 
-How it works:
-- Post a movie to various groups you are a part of. You can also include optional notes about where you found the movie or why you want to watch it.
-- Mark movies as watched and give them ratings based on how much you liked it and how good you think it is as a movie. The overall score is calculated as the average of these two ratings.
-- Request movies from the groups you are a part of by pulling from movies that have been rated but haven't been marked as viewed yet.
-- Add your own layer of genre tagging to movies in the app.
-- Use maury-bot for Discord integration to easily access your watchaway account through Discord.
-- All movie data is collected from the public database at https://thetvdb.com/.
+- Collaborate with groups, synchronizing your watch lists and sharing recommendations and ratings.
+- Search within your groups to see what movies your friends are wanting to watch or have already watched and commented on, making it easy to plan movie nights.
+- Analyze your data to understand the genres that your friends prefer and what your average favorite movies are.
+- Mark movies as watched and rate them based on personal enjoyment and overall quality. The overall score is calculated as the average of these two ratings.
+- Add your own genre tags to movies in the app.
+- Integrate with Discord using maury-bot for easy access to your watchaway account.
+- Access movie data from the trusted public database at https://thetvdb.com/.
 
 
 ### Setup
