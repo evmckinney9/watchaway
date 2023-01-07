@@ -7,7 +7,7 @@ function App() {
 
 
   async function getData() {
-    const response = await axios.get(apiUrl + '/product');
+    const response = await axios.get(apiUrl + '/getAllUsers');
     setData(JSON.stringify(response.data));
   }
 
