@@ -10,6 +10,7 @@ import nltk
 import matplotlib.pyplot as plt
 import numpy as np
 
+
 # %%
 import tmdbsimple as tmdb
 # get api key from tmdb_config.json
@@ -17,6 +18,7 @@ import json
 with open('../tmdb_config.json') as f:
     config = json.load(f)
 tmdb.API_KEY = config['TMDB_API_KEY']
+
 
 # %%
 mock_general_movies =[
@@ -88,12 +90,14 @@ mock_movie_titles = mock_horror_movies + mock_general_movies
 # remove duplicates
 mock_movie_titles = list(set(mock_movie_titles))
 
+
 # %%
 # get movie ids from movie titles
 movie_ids = []
 for title in mock_movie_titles:
     response = tmdb.Search().movie(query=title)
     movie_ids.append(response['results'][0]['id'])
+
 
 # %%
 # Find the director of a movie
@@ -104,6 +108,7 @@ def find_director(movie_id):
             return crew_member['name']
     return None
 # print(find_director(movie_ids[0]))
+
 
 # %%
 # get movie details, we only need the overview, genres, release year, and director
@@ -173,29 +178,6 @@ stem_column(pandas_movie_details, 'genres')
 # print(pandas_movie_details['overview'][0])
 
 # %%
-# create a stemmer
-stemmer = PorterStemmer()
-
-# # stem the overview
-stemmed_overview = []
-for overview in pandas_movie_details['overview']:
-    stemmed_overview.append(" ".join([stemmer.stem(word) for word in overview.split(" ")]))
-
-# # stem the genres
-stemmed_genres = []
-for genres in pandas_movie_details['genres']:
-    stemmed_genres.append(" ".join([stemmer.stem(word) for word in genres.split(" ")]))
-
-# # update the dataframe with the stemmed text
-# pandas_movie_details['overview'] = stemmed_overview
-# pandas_movie_details['genres'] = stemmed_genres
-
-
-# %%
-# #post stemming
-# print(pandas_movie_details['overview'][0])
-
-# %%
 # prepare the dataframe for clustering
 df = pandas_movie_details.drop(columns=['id', 'title'])
 
@@ -227,6 +209,7 @@ df_vectors = pd.DataFrame(combined_vectors)
 top_c = svd.components_.argsort()[:, -num_components:]
 print("Top synopsis features:")
 print([tfid_vectorizer.get_feature_names_out()[i] for i in top_c[0]])
+
 
 # %%
 from sklearn.metrics import silhouette_score
@@ -262,5 +245,3 @@ for cluster in pandas_movie_details['cluster'].unique():
     for title, id in zip(titles, ids):
         print(title, " - ", id)
     print()
-
-
