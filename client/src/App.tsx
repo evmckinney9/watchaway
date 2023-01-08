@@ -32,7 +32,7 @@ function App() {
     });
     setData(response.data);
     console.log(data);
-    console.log("https://image.tmdb.org/t/p/w500" + response.data.poster_path);
+    // console.log("https://image.tmdb.org/t/p/w500" + response.data.poster_path);
   }
 
   return (

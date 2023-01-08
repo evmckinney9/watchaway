@@ -1,1 +1,3 @@
 tmdbsimple
+scikit-learn
+nltk
