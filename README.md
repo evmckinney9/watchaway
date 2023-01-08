@@ -17,7 +17,7 @@ The backend process, which utilizes Google Firestore as its database, will be ru
 Makefile commands:
 
 - `make start` 
-The make start command will start the backend and frontend processes for the project concurrently in detached tmux sessions. The backend process will be run in a tmux session called "backend", and the frontend process will be run in a tmux session called "web" which can be selected using `tmux attach -t "target"` and deattached from using `Ctrl+B, D`. 
+The make start command will start the backend and frontend processes for the project concurrently in detached tmux sessions. The backend process will be run in a tmux session called "server", and the frontend process will be run in a tmux session called "client" which can be selected using `tmux attach -t "target"` and deattached from using `Ctrl+B, D`. 
 
 - `make stop`
-The make stop command will stop the backend and web processes by killing any running processes that contain the string "node" in their command line arguments, as well as any tmux sessions with the names "backend" or "web". This will effectively stop the backend and web processes started by the make start command.
+The make stop command will stop the backend and frontend processes by killing any running processes that contain the string "node" in their command line arguments, as well as any tmux sessions with the names "server" or "client". This will effectively stop the server and client processes started by the make start command.

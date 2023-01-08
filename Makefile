@@ -1,15 +1,15 @@
 kill-tmux:
 	pkill -f node
-	tmux kill-session -t backend || true
-	tmux kill-session -t web || true
+	tmux kill-session -t server || true
+	tmux kill-session -t client || true
 
-backend-start:
-	tmux new-session -d -s backend 'cd backend && rm -rf build && yarn start'
+server-start:
+	tmux new-session -d -s server 'cd server/express/ && rm -rf build && yarn start'
 
-web-start:
-	tmux new-session -d -s web 'cd web && rm -rf build && yarn start'
+client-start:
+	tmux new-session -d -s client 'cd client && rm -rf build && yarn start'
 
-start: backend-start web-start
+start: server-start client-start
 	
 stop: kill-tmux
 
