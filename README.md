@@ -8,6 +8,8 @@ Welcome to watchaway, where you can discover new movies with the help of your fr
 - Integrate with Discord using maury-bot for easy access to your watchaway account.
 - Access movie data from the trusted public database https://www.themoviedb.org/
 
+![image](https://user-images.githubusercontent.com/47376937/211179252-92470a03-eef0-4c15-8ea4-8cbe0e933ef9.png)
+
 
 ### Setup
 
