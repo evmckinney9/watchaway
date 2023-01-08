@@ -6,7 +6,7 @@ Welcome to watchaway, where you can discover new movies with the help of your fr
 - Mark movies as watched and rate them based on personal enjoyment and overall quality. The overall score is calculated as the average of these two ratings.
 - Add your own genre tags to movies in the app.
 - Integrate with Discord using maury-bot for easy access to your watchaway account.
-- Access movie data from the trusted public database at https://thetvdb.com/.
+- Access movie data from the trusted public database https://www.themoviedb.org/
 
 
 ### Setup
