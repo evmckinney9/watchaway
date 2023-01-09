@@ -198,7 +198,6 @@ The results are not perfect, but can be improved if we do some more data scrapin
     The Proposal  -  18240
     Mama Mia - Nur keine Panik  -  4659
     
-    
     Cluster:  4
     The Godfather  -  238
     The Usual Suspects  -  629
