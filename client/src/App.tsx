@@ -1,49 +1,60 @@
-import React, { useState } from 'react';
-import axios from 'axios';
-import { apiUrl } from './config';
-
-interface Movie {
-  adult: boolean;
-  backdrop_path: string;
-  genre_ids: number[];
-  id: number;
-  original_language: string;
-  original_title: string;
-  overview: string;
-  popularity: number;
-  poster_path: string;
-  release_date: string;
-  title: string;
-  video: boolean;
-  vote_average: number;
-  vote_count: number;
-}
+import React, { useState } from "react";
+import handleSearch from "./services/handleSearch";
+import { Input, Box, IconButton } from "@chakra-ui/react";
+import { createMovieCard, MovieData } from "./Cards";
+import { SimpleGrid } from "@chakra-ui/react";
 
 function App() {
-  const [data, setData] = useState<Movie | null>(null);
-  const [searchTerm, setSearchTerm] = useState('');
+  const [data, setData] = useState<MovieData[] | null>(null);
+  const [searchTerm, setSearchTerm] = useState("");
 
-  async function handleSearch() {
-    console.log('searching for', searchTerm);
-    const response = await axios.get(apiUrl + '/queryMovieDB', {
-      params: {
-        searchField: searchTerm
-      }
-    });
-    setData(response.data);
-    console.log(data);
-    // console.log("https://image.tmdb.org/t/p/w500" + response.data.poster_path);
-  }
+  const handleEnter = async (event: any) => {
+    if (event.key === "Enter") {
+      const searchResults = await handleSearch(searchTerm);
+      setData(searchResults);
+    }
+  };
 
   return (
     <div>
-      <input type="text" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} />
-      <button onClick={handleSearch}>Search</button>
+      <Box w="100%" display="flex" justifyContent="center">
+        <Box
+          display="flex"
+          alignItems="center"
+          borderWidth="1px"
+          rounded="md"
+          px="2"
+          py="1"
+        >
+          <Input
+            placeholder="Search for a movie"
+            size="md"
+            type="text"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            onKeyPress={handleEnter}
+          />
+          <IconButton
+            aria-label="Search database"
+            variant="ghost"
+            colorScheme="blue"
+            onClick={handleEnter}
+            ml={2}
+            roundedRight="md"
+          >
+            <text>Search</text>
+          </IconButton>
+        </Box>
+      </Box>
       <div>
         {data && (
           <div>
-            <img src={"https://image.tmdb.org/t/p/w500" + data.poster_path} alt={data.title} />
-            <p>{data.title}</p>
+            <SimpleGrid
+              spacing={4}
+              templateColumns="repeat(auto-fill, minmax(200px, 1fr))"
+            >
+              {data.map((movie) => createMovieCard(movie))}
+            </SimpleGrid>
           </div>
         )}
       </div>
