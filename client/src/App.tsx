@@ -1,64 +1,45 @@
-import React, { useState } from "react";
-import handleSearch from "./services/handleSearch";
-import { Input, Box, IconButton } from "@chakra-ui/react";
-import { createMovieCard, MovieData } from "./Cards";
-import { SimpleGrid } from "@chakra-ui/react";
+import React from "react";
+import { CssBaseline, ThemeProvider } from "@mui/material";
+import { createTheme } from "@mui/material/styles";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { routes as appRoutes } from "./routes";
+import Layout from "./components/Layout";
 
 function App() {
-  const [data, setData] = useState<MovieData[] | null>(null);
-  const [searchTerm, setSearchTerm] = useState("");
-
-  const handleEnter = async (event: any) => {
-    if (event.key === "Enter") {
-      const searchResults = await handleSearch(searchTerm);
-      setData(searchResults);
-    }
-  };
+  // define theme using material ui dark theme
+  const theme = createTheme({
+    palette: {
+      mode: "dark",
+      primary: {
+        light: "#F0EBD8",
+        main: "#3E5C76",
+        dark: "#bdd9e9",
+      },
+      secondary: {
+        light: "#748CAB",
+        main: "#1D2D44",
+        dark: "#0D1321",
+      },
+    },
+  });
 
   return (
-    <div>
-      <Box w="100%" display="flex" justifyContent="center">
-        <Box
-          display="flex"
-          alignItems="center"
-          borderWidth="1px"
-          rounded="md"
-          px="2"
-          py="1"
-        >
-          <Input
-            placeholder="Search for a movie"
-            size="md"
-            type="text"
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            onKeyPress={handleEnter}
-          />
-          <IconButton
-            aria-label="Search database"
-            variant="ghost"
-            colorScheme="blue"
-            onClick={handleEnter}
-            ml={2}
-            roundedRight="md"
-          >
-            <text>Search</text>
-          </IconButton>
-        </Box>
-      </Box>
-      <div>
-        {data && (
-          <div>
-            <SimpleGrid
-              spacing={4}
-              templateColumns="repeat(auto-fill, minmax(200px, 1fr))"
-            >
-              {data.map((movie) => createMovieCard(movie))}
-            </SimpleGrid>
-          </div>
-        )}
-      </div>
-    </div>
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <Router>
+        <Layout>
+          <Routes>
+            {appRoutes.map((route) => (
+              <Route
+                key={route.key}
+                path={route.path}
+                element={<route.component />}
+              />
+            ))}
+          </Routes>
+        </Layout>
+      </Router>
+    </ThemeProvider>
   );
 }
 

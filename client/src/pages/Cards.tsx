@@ -1,6 +1,12 @@
 // In a new file called Card.tsx
 import React from "react";
-import { Card, CardHeader, CardBody, CardFooter } from "@chakra-ui/react";
+import {
+  Card,
+  CardHeader,
+  CardBody,
+  CardFooter,
+  shouldForwardProp,
+} from "@chakra-ui/react";
 import {
   Image,
   Stack,
@@ -11,22 +17,7 @@ import {
   ButtonGroup,
 } from "@chakra-ui/react";
 
-export interface MovieData {
-  adult: boolean;
-  backdrop_path: string;
-  genre_ids: number[];
-  id: number;
-  original_language: string;
-  original_title: string;
-  overview: string;
-  popularity: number;
-  poster_path: string;
-  release_date: string;
-  title: string;
-  video: boolean;
-  vote_average: number;
-  vote_count: number;
-}
+import { MovieData } from "../../../shared/MovieInfo";
 
 export const createMovieCard = (movie: MovieData): JSX.Element => {
   return (
